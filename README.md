@@ -10,6 +10,8 @@ Will be updated soon........
 Facial recognition model (https://drive.google.com/file/d/1HuDJDlQtpUzW62tj_wkaeAUPU96wC_D4/view?usp=sharing) which needs to be put in 'models' directory
 This pre-trained model is trained on CASIA-WebFace and ArcFace using 128x128 image
 
+Download and put the checkpt file into 'models' directory.
+
 ## training
 
 1. Prepare dataset

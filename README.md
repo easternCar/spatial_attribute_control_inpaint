@@ -11,10 +11,14 @@ The objective of image inpainting is refilling the masked area with semantically
 
 Will be updated soon........
 
-Facial recognition model (https://drive.google.com/file/d/1HuDJDlQtpUzW62tj_wkaeAUPU96wC_D4/view?usp=sharing) which needs to be put in 'models' directory
+Facial recognition model [Download](https://drive.google.com/file/d/1HuDJDlQtpUzW62tj_wkaeAUPU96wC_D4/view?usp=sharing) which needs to be put in **'models'** directory
 This pre-trained model is trained on CASIA-WebFace and ArcFace using 128x128 image
 
-Download and put the checkpt file into 'models' directory.
+Download and put the checkpt file into **'models'** directory.
+
+```
+$ mv CASIA_PRETRAINED.ckpt models/
+```
 
 ## Example of dataset
 1. We followed the datset settings from L2M-GAN(https://github.com/songquanpeng/L2M-GAN).
@@ -45,18 +49,47 @@ Download and put the checkpt file into 'models' directory.
 Example of dataset (small)
 
 ## training
+Modify config.py or scripts/train.sh file to change argument or options.
 
-Preparing....
+```
+$ ./scripts/train.sh
+```
 
-
-## Inference
-
-Preparing....
+Preparing.............
 
 # Masks
 
 We included one custom binary mask 'face_mask.png'.
-As for random masks, we used mask generator fom DeepFill repository (https://github.com/zhaoyuzhi/deepfillv2)
+For random masks, we used mask generator fom DeepFill repository (https://github.com/zhaoyuzhi/deepfillv2)
+
+* FIXED MASK 
+In train.sh, if you set *'mask_type'* as **'FIX'**, set the binary mask file in argument 'fix_mask_path'.
+We provide our two custom masks in mask/fix_mask.
+
+* RANDOM MASK
+In train.sh, if you set *'mask_type'* as **'RAND'**, set the binary mask file in argument 'rand_mask_path'.
+However, to reduce time spent in mask generation, we pre-generated random masks.
+First, generate random masks. To generate random masks, run mask/mask_generator.py.
+Default number of generated masks is 100 and default save path is mask/random_masks.
+
+```
+$ python3.6 ./mask_codes/mask_generator.py --num 100 --path mask/random_masks
+```
+
+
+## Sample Inference
+
+We have trained checkpoint file with 'smile' attribute using 'mask/fix_mask/half_unnder_big.png'.
+Download [checkpoint file](https://drive.google.com/file/d/1F3Y-8GEaRhoh1LhaSadHJZec8l5VCBg9/view?usp=sharing) and put *smile_fix* directory into **'expr'** directory.
+Download [sample dataset](https://drive.google.com/file/d/1aELaSikiXPis3CREPoer8Lw2xoVgdMN5/view?usp=sharing) which contains few samples of images about smiling attribute and put *celeba_smile_sample* directory into **'archive'** directory.
+
+```
+$ mv smile_fix ./expr/
+$ mv celeba_smile_sample ./archive/
+$ ./scripts/sample.sh
+```
+
+Preparing.................
 
 
 ## Acknowledgement

@@ -145,8 +145,8 @@ def parse_args():
     # ------- [INPAINTING TYPE] ------------------------
     parser.add_argument('--model_type', type=str, default="SAC")
     parser.add_argument('--mask_type', type=str, default="FIX")
-    parser.add_argument('--rand_mask_path', type=str, default="mask_code/deepfill_mask")
-    parser.add_argument('--fix_mask_path', type=str, default="mask_code/fix_mask/face_mask.png")
+    parser.add_argument('--rand_mask_path', type=str, default="mask/random_masks")
+    parser.add_argument('--fix_mask_path', type=str, default="mask/fix_mask/half_under_big.png")
     parser.add_argument('--mask_not_shuffle', type=str2bool, default=False)
     
 

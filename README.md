@@ -9,8 +9,6 @@ The objective of image inpainting is refilling the masked area with semantically
 
 <p align="center"><img src="sample_imgs/example2.png" width="720"\></p>
 
-Will be updated soon........
-
 Facial recognition model [Download](https://drive.google.com/file/d/1HuDJDlQtpUzW62tj_wkaeAUPU96wC_D4/view?usp=sharing) which needs to be put in **'models'** directory
 This pre-trained model is trained on CASIA-WebFace and ArcFace using 128x128 image
 
@@ -46,16 +44,7 @@ $ mv CASIA_PRETRAINED.ckpt models/
         ...    
         + image 2-n 
 
-Example of dataset (small)
-
-## training
-Modify config.py or scripts/train.sh file to change argument or options.
-
-```
-$ ./scripts/train.sh
-```
-
-Preparing.............
+[Example of dataset (small)](https://drive.google.com/file/d/1s8Pq5fM02z3mS35k8sWv0ymcwjqZrJuM/view?usp=sharing)
 
 # Masks
 
@@ -81,16 +70,43 @@ $ python3.6 ./mask_codes/mask_generator.py --num 100 --path mask/random_masks
 
 We have trained checkpoint file with 'smile' attribute using 'mask/fix_mask/half_unnder_big.png'.
 Download [checkpoint file](https://drive.google.com/file/d/1BBmpVweF2uThi6Dkc18sZ7ZM9g07eK7S/view?usp=sharing) and put *smile_fix* directory into **'expr'** directory.
-Download [sample dataset](https://drive.google.com/file/d/1aELaSikiXPis3CREPoer8Lw2xoVgdMN5/view?usp=sharing) which contains few samples of images about smiling attribute and put *celeba_smile_sample* directory into **'archive'** directory.
+Download [sample dataset](https://drive.google.com/file/d/1s8Pq5fM02z3mS35k8sWv0ymcwjqZrJuM/view?usp=sharing) linked above which contains few samples of images about smiling attribute and put *celeba_smile_sample* directory into **'archive'** directory.
 
 ```
+$ unzip smile_ckpt.zip
 $ mv smile_fix ./expr/
+$ unzip sample_db.zip
 $ mv celeba_smile_sample ./archive/
 $ ./scripts/sample.sh
 ```
 
-Preparing.................
+Then, the samples will be saved under 'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS'
 
+* Non-smile -> Smile
+Check *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/non_smile2smile'* directory for the results. Also input masked images will be saved in *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/non_smile2smile/masked'* directory.
+
+* Smile -> Non-smile
+Check *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/smile2non_smile'* directory for the results. Also input masked images will be saved in *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/smile2non_smile/masked'* directory.
+
+<p align="center"><img src="sample_imgs/example3.png" width="620"\></p>
+
+You can train and generate image using other attributes by placing images like that.
+
+
+## training
+Modify config.py or scripts/train.sh file to change argument or options.
+The sample dataset we linked above is **Insufficient** for training so prepare your custom dataset from CelebA or FFHQ dataset.
+
+```
+$ ./scripts/train.sh
+```
+
+* About GPU
+In the top line of 'train.sh' file, note that 'CUDA_VISIBLE_DEVICES' means your real GPU ids which you want to make visible and '--gpus' means index of GPUs that you enabled as 'visible'.
+  * Assume you have 4 GPUs and want to use 3rd, 4th GPUs for training. Then set shell file as 'CUDA_VISIBLE_DEVICES=2,3' and '--gpus='0,1''. 
+  * Assume you have 1 GPU and want to use it for training. Then set shell file as 'CUDA_VISIBLE_DEVICES=0' and '--gpus='0''.
+
+<p align="center"><img src="sample_imgs/interpolation.png" width="720"\></p>
 
 ## Acknowledgement
  + Most functions are brought from L2M-GAN(https://github.com/songquanpeng/L2M-GAN).

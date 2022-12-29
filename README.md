@@ -80,7 +80,7 @@ $ python3.6 ./mask_codes/mask_generator.py --num 100 --path mask/random_masks
 ## Sample Inference
 
 We have trained checkpoint file with 'smile' attribute using 'mask/fix_mask/half_unnder_big.png'.
-Download [checkpoint file](https://drive.google.com/file/d/1F3Y-8GEaRhoh1LhaSadHJZec8l5VCBg9/view?usp=sharing) and put *smile_fix* directory into **'expr'** directory.
+Download [checkpoint file](https://drive.google.com/file/d/1BBmpVweF2uThi6Dkc18sZ7ZM9g07eK7S/view?usp=sharing) and put *smile_fix* directory into **'expr'** directory.
 Download [sample dataset](https://drive.google.com/file/d/1aELaSikiXPis3CREPoer8Lw2xoVgdMN5/view?usp=sharing) which contains few samples of images about smiling attribute and put *celeba_smile_sample* directory into **'archive'** directory.
 
 ```

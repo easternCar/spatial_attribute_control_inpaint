@@ -83,9 +83,11 @@ $ ./scripts/sample.sh
 Then, the samples will be saved under 'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS'
 
 * Non-smile -> Smile
+
 Check *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/non_smile2smile'* directory for the results. Also input masked images will be saved in *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/non_smile2smile/masked'* directory.
 
 * Smile -> Non-smile
+
 Check *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/smile2non_smile'* directory for the results. Also input masked images will be saved in *'expr/smile_fix/samples/YYYY-MM-DD_HH-MM-SS/smile2non_smile/masked'* directory.
 
 <p align="center"><img src="sample_imgs/example3.png" width="620"\></p>
